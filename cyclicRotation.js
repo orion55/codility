@@ -10,7 +10,7 @@ function solution(A, K) {
   const size = A.length;
 
   if (size === 0 || size > 100) {
-    throw new Error(`Solution: Пустой массив или длина массива больше допустимой. ${A}`);
+    throw new Error(`Solution: Пустой массив или длина массива больше допустимой. ${size}`);
   }
 
   A.forEach((item) => {
