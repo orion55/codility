@@ -3,7 +3,7 @@ function solution(A) {
         && parseInt(Number(value), 10) === value
         && !Number.isNaN(parseInt(value, 10));
 
-  if (!Array.isArray(A)) {
+  if (!A) {
     throw new Error(`Solution: ${A} не является массивом!`);
   }
 
@@ -23,18 +23,22 @@ function solution(A) {
     }
   });
 
-  for (let i = A.length - 1; i >= 0; i -= 1) {
-    if (i % 2 === 0) {
-      A.splice(i, 1); // Remove even numbers
+  let i = size - 1;
+  while (i > 1) {
+    const numElem = A.slice().slice(0, -1).findIndex((item) => item === A[i]);
+    if (numElem !== -1) {
+      A.splice(i, 1);
+      A.splice(numElem, 1);
+      i = A.length - 1;
+    } else {
+      return A[i];
     }
   }
-  console.log(A);
-
-  return null;
+  return A[0];
 }
 
 try {
-  console.log(solution([9, 3, 9, 3, 9, 7, 9]));
+  console.log(solution([9, 7, 3, 9, 3, 9, 9]));
 } catch (e) {
   console.error(`${e.name}: ${e.message}`);
 }
