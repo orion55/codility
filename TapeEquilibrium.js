@@ -27,7 +27,7 @@ function solution(A) {
     if (delta < min) min = delta;
   });
 
-  return min;k
+  return min;
 }
 
 console.log(solution([3, 1, 2, 4, 3]));
